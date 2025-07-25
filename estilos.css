@@ -1,0 +1,96 @@
+/* estilos.css */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  animation: fondoFade 2s ease-in;
+}
+
+.container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px 30px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0,255,255,0.3);
+  animation: entrada 1.2s ease-out;
+}
+
+input, select, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  background-color: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+input:focus, select:focus, button:hover {
+  outline: none;
+  background-color: rgba(255,255,255,0.2);
+}
+
+button {
+  margin-top: 20px;
+  background-color: #00c9ff;
+  color: #000;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #92fe9d;
+  color: #000;
+}
+
+label {
+  margin-top: 15px;
+  display: block;
+  font-weight: bold;
+  color: #00ffff;
+}
+
+.radio-group label {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 12px;
+  color: #aaa;
+  opacity: 0.7;
+  animation: fadeIn 2s ease-in;
+}
+
+/* Animaciones */
+@keyframes entrada {
+  from {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fondoFade {
+  from {
+    background: #000;
+  }
+  to {
+    background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 0.7; }
+}

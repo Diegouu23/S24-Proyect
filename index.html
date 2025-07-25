@@ -1,42 +1,60 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulario S-24</title>
+  <link rel="stylesheet" href="estilos.css">
   <style>
     body { font-family: sans-serif; padding: 20px; max-width: 500px; margin: auto; }
     label { display: block; margin-top: 10px; }
     input, select, button { width: 100%; padding: 10px; margin-top: 5px; }
     .radio-group label { display: inline-block; margin-right: 10px; }
+    #formularioPagoUnico { display: none; margin-top: 10px; }
+    footer { text-align: center; margin-top: 20px; font-size: 12px; color: #666; }
   </style>
 </head>
 <body>
   <h2>Formulario S-24</h2>
   <form id="formulario">
+    <!-- Siempre visible -->
     <label for="fecha">Fecha:</label>
     <input type="date" id="fecha" required>
 
     <label>Tipo de transacción:</label>
     <div class="radio-group">
       <label><input type="radio" name="tipo" value="Donación" required> Donación</label>
-      <label><input type="radio" name="tipo" value="Pago"> Pago</label>
+      <label><input type="radio" name="tipo" value="Pago" id="radioPago"> Pago</label>
       <label><input type="radio" name="tipo" value="Depósito"> Depósito en caja</label>
       <label><input type="radio" name="tipo" value="Adelanto"> Adelanto de efectivo</label>
     </div>
 
-    <label for="obra">Donación Obra Mundial (S/):</label>
-    <input type="number" id="obra" min="0" step="0.01">
+    <!-- Aparecen solo si es 'Pago' -->
+    <div id="formularioPagoUnico">
+      <label>Concepto de Pago:</label>
+      <input type="text" id="conceptoPago" placeholder="Ej: Servicios, mantenimiento...">
 
-    <label for="gastos">Gastos Congregación (S/):</label>
-    <input type="number" id="gastos" min="0" step="0.01">
+      <label>Monto a pagar (S/):</label>
+      <input type="number" id="montoPago" step="0.01" placeholder="0.00">
+    </div>
 
+    <!-- Campos normales que se ocultan si es 'Pago' -->
+    <div id="camposNormales">
+      <label for="obra">Donación Obra Mundial (S/):</label>
+      <input type="number" id="obra" min="0" step="0.01">
+
+      <label for="gastos">Gastos Congregación (S/):</label>
+      <input type="number" id="gastos" min="0" step="0.01">
+    </div>
+
+    <!-- Siempre visible -->
     <label for="total">Total (S/):</label>
     <input type="number" id="total" readonly>
 
     <button type="submit">Generar PDF</button>
   </form>
+
+  <footer>Creado por DiegoC</footer>
 
   <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
   <script src="script.js"></script>
